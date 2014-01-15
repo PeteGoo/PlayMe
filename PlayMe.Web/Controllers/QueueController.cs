@@ -52,6 +52,15 @@ namespace PlayMe.Web.Controllers
         }
 
         [HttpGet]
+        public QueuedTrack CurrentTrack()
+        {
+            using (var client = new MusicServiceClient())
+            {
+                return client.GetPlayingTrack();
+            }
+        }
+
+        [HttpGet]
         public IEnumerable<QueuedTrack> Default()
         {
             using (var client = new MusicServiceClient())
